@@ -38,9 +38,9 @@ export const skills: Skill[] = [
     tags: ["C#", "ASP.NET Core", "EF Core", "MySQL", "JWT"],
   },
   {
-    title: "Frontend Development",
+    title: "Frontend (cơ bản)",
     highlight:
-      "Xây dựng giao diện với React 18 + TypeScript, dùng Vite làm build tool, Ant Design cho UI component.",
+      "Tự dựng được giao diện bằng React + TypeScript, đủ dùng cho dự án cá nhân. Không phải thế mạnh chính, trọng tâm của tôi vẫn là Backend.",
     tags: ["React", "TypeScript", "Vite", "Axios", "SCSS"],
   },
   {
