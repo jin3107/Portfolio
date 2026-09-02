@@ -1,0 +1,312 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-logo {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-h);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-link.active {
+  color: var(--text-h);
+  border-bottom-color: var(--accent);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Bento grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(140px, auto);
+  gap: 16px;
+  padding: 40px 20px;
+  text-align: left;
+}
+
+.bento-tile {
+  grid-column: span 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--code-bg);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bento-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.bento-tile h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  color: var(--text-h);
+}
+
+.bento-tile p {
+  margin: 0 0 6px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.bento-tag {
+  display: inline-block;
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.bento-meta {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.bento-page-header {
+  grid-column: 1 / -1;
+}
+
+.bento-page-header h1 {
+  margin: 8px 0 12px;
+}
+
+.bento-error {
+  grid-column: 1 / -1;
+}
+
+/* Hero */
+.bento-hero {
+  background: linear-gradient(155deg, var(--accent-bg), var(--code-bg) 55%);
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.hero-avatar {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.hero-name {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  color: var(--text-h);
+}
+
+.hero-nickname {
+  font-style: italic;
+  margin: 4px 0 0;
+}
+
+.hero-subtitle {
+  margin-top: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.social-link {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--social-color);
+  text-decoration: none;
+}
+
+/* GitHub stats */
+.github-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.github-stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease;
+}
+
+.github-stats-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.github-stats-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.github-stats-label {
+  font-size: 12px;
+  margin: 4px 0 0;
+  text-align: center;
+  color: var(--text);
+}
+
+/* Skills */
+.bento-skill-highlight {
+  flex-grow: 1;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.tag-pill {
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+/* Projects */
+.bento-project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.bento-tag-wip {
+  color: #b45309;
+  background: rgba(217, 119, 6, 0.15);
+}
+
+/* Contact */
+.bento-contact-card {
+  gap: 8px;
+}
+
+.contact-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .bento-hero {
+    grid-column: span 6;
+  }
+  .bento-stats {
+    grid-column: span 6;
+  }
+  .bento-skill,
+  .bento-project,
+  .bento-contact-card {
+    grid-column: span 2;
+  }
+  .bento-edu,
+  .bento-exp {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .bento-hero {
+    grid-column: span 8;
+    grid-row: span 2;
+  }
+  .bento-stats {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  .bento-skill,
+  .bento-contact-card {
+    grid-column: span 4;
+  }
+  .bento-project {
+    grid-column: span 4;
+  }
+  .bento-edu,
+  .bento-exp {
+    grid-column: span 6;
+  }
+}
