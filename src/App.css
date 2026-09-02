@@ -125,8 +125,7 @@
 
 .hero-top {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 16px;
 }
 
@@ -240,7 +239,21 @@
 .bento-project-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 12px;
+  gap: 6px 14px;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.stat-chip svg {
+  flex: 0 0 auto;
+  opacity: 0.8;
 }
 
 .bento-tag-wip {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { greeting } from '../data/portfolio'
+import { StarIcon, ForkIcon, IssueIcon, ClockIcon } from '../components/icons'
 
 type Repo = {
   id: number
@@ -72,11 +73,19 @@ export default function Projects() {
           <h3>{repo.name}</h3>
           <p>{repo.description ?? 'Chưa có mô tả.'}</p>
           <div className="bento-meta bento-project-meta">
-            {repo.language && <span>{repo.language}</span>}
-            <span>★ {repo.stargazers_count}</span>
-            <span>🍴 {repo.forks_count}</span>
-            <span>🐛 {repo.open_issues_count}</span>
-            <span>{timeAgo(repo.pushed_at)}</span>
+            {repo.language && <span className="stat-chip">{repo.language}</span>}
+            <span className="stat-chip">
+              <StarIcon /> {repo.stargazers_count}
+            </span>
+            <span className="stat-chip">
+              <ForkIcon /> {repo.forks_count}
+            </span>
+            <span className="stat-chip">
+              <IssueIcon /> {repo.open_issues_count}
+            </span>
+            <span className="stat-chip">
+              <ClockIcon /> {timeAgo(repo.pushed_at)}
+            </span>
           </div>
         </a>
       ))}

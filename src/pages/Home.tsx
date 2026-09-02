@@ -8,11 +8,11 @@ export default function Home() {
     <div className="bento-grid">
       <section className="bento-tile bento-hero">
         <div className="hero-top">
+          <img className="hero-avatar" src={avatar} alt="" aria-hidden="true" />
           <div>
             <h1 className="hero-name">{greeting.name}</h1>
             <p className="hero-nickname">( {greeting.nickname} )</p>
           </div>
-          <img className="hero-avatar" src={avatar} alt="" aria-hidden="true" />
         </div>
         <p className="hero-subtitle">{greeting.subtitle}</p>
         <SocialLinks />
