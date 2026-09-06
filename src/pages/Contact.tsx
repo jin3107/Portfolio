@@ -1,20 +1,23 @@
 import SocialLinks from '../components/SocialLinks'
 import { contact } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
+
   return (
     <div className="bento-grid">
       <section className="bento-tile bento-page-header">
         <span className="bento-tag">✉️ Contact</span>
-        <h1>{contact.title}</h1>
-        <p>{contact.description}</p>
+        <h1>{t.contact.title}</h1>
+        <p>{t.contact.description}</p>
       </section>
 
       <div className="bento-tile bento-contact-card">
-        <h3>Email</h3>
+        <h3>{t.contact.emailLabel}</h3>
         <p>{contact.email}</p>
         <a className="contact-btn" href={`mailto:${contact.email}`}>
-          Gửi email
+          {t.contact.sendEmail}
         </a>
       </div>
 
@@ -24,12 +27,12 @@ export default function Contact() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <h3>{contact.address.title}</h3>
-        <p>{contact.address.subtitle}</p>
+        <h3>{t.contact.addressTitle}</h3>
+        <p>{t.contact.addressSubtitle}</p>
       </a>
 
       <div className="bento-tile bento-contact-card">
-        <h3>Mạng xã hội</h3>
+        <h3>{t.contact.socialLabel}</h3>
         <SocialLinks />
       </div>
     </div>

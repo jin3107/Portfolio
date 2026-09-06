@@ -1,20 +1,23 @@
 import SocialLinks from '../components/SocialLinks'
 import GithubStats from '../components/GithubStats'
 import avatar from '../assets/chibiboy.jpg'
-import { greeting, skills, education, experience } from '../data/portfolio'
+import { education as educationLink } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Home() {
+  const { t } = useLanguage()
+
   return (
     <div className="bento-grid">
       <section className="bento-tile bento-hero">
         <div className="hero-top">
           <img className="hero-avatar" src={avatar} alt="" aria-hidden="true" />
           <div>
-            <h1 className="hero-name">{greeting.name}</h1>
-            <p className="hero-nickname">( {greeting.nickname} )</p>
+            <h1 className="hero-name">{t.greeting.name}</h1>
+            <p className="hero-nickname">( {t.greeting.nickname} )</p>
           </div>
         </div>
-        <p className="hero-subtitle">{greeting.subtitle}</p>
+        <p className="hero-subtitle">{t.greeting.subtitle}</p>
         <SocialLinks />
       </section>
 
@@ -23,7 +26,7 @@ export default function Home() {
         <GithubStats />
       </section>
 
-      {skills.map((skill) => (
+      {t.skills.map((skill) => (
         <section className="bento-tile bento-skill" key={skill.title}>
           <h3>{skill.title}</h3>
           <p className="bento-skill-highlight">{skill.highlight}</p>
@@ -39,22 +42,22 @@ export default function Home() {
 
       <a
         className="bento-tile bento-edu"
-        href={education.link}
+        href={educationLink.link}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span className="bento-tag">🎓 Học vấn</span>
-        <h3>{education.school}</h3>
-        <p>{education.subtitle}</p>
-        <p className="bento-meta">{education.duration}</p>
+        <span className="bento-tag">{t.education.label}</span>
+        <h3>{t.education.school}</h3>
+        <p>{t.education.subtitle}</p>
+        <p className="bento-meta">{t.education.duration}</p>
       </a>
 
       <section className="bento-tile bento-exp">
-        <span className="bento-tag">🧑‍💻 Kinh nghiệm</span>
-        <h3>{experience.title}</h3>
-        <p>{experience.company}</p>
-        <p>{experience.description}</p>
-        <p className="bento-meta">{experience.duration}</p>
+        <span className="bento-tag">{t.experience.label}</span>
+        <h3>{t.experience.title}</h3>
+        <p>{t.experience.company}</p>
+        <p>{t.experience.description}</p>
+        <p className="bento-meta">{t.experience.duration}</p>
       </section>
     </div>
   )

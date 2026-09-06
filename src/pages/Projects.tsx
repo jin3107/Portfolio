@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { greeting } from '../data/portfolio'
 import { StarIcon, ForkIcon, IssueIcon, ClockIcon } from '../components/icons'
+import LanguageBars from '../components/LanguageBars'
+import { useLanguage } from '../i18n/LanguageContext'
+import type { Lang } from '../i18n/translations'
 
 type Repo = {
   id: number
@@ -18,16 +21,24 @@ type Repo = {
 
 const githubUsername = greeting.githubProfile.replace(/\/$/, '').split('/').pop()
 
-function timeAgo(dateString: string) {
+function timeAgo(dateString: string, lang: Lang) {
   const days = Math.floor((Date.now() - new Date(dateString).getTime()) / 86_400_000)
-  if (days < 1) return 'Hôm nay'
-  if (days < 30) return `${days} ngày trước`
+  if (lang === 'vi') {
+    if (days < 1) return 'Hôm nay'
+    if (days < 30) return `${days} ngày trước`
+    const months = Math.floor(days / 30)
+    if (months < 12) return `${months} tháng trước`
+    return `${Math.floor(months / 12)} năm trước`
+  }
+  if (days < 1) return 'Today'
+  if (days < 30) return `${days}d ago`
   const months = Math.floor(days / 30)
-  if (months < 12) return `${months} tháng trước`
-  return `${Math.floor(months / 12)} năm trước`
+  if (months < 12) return `${months}mo ago`
+  return `${Math.floor(months / 12)}y ago`
 }
 
 export default function Projects() {
+  const { t, lang } = useLanguage()
   const [repos, setRepos] = useState<Repo[] | null>(null)
   const [error, setError] = useState(false)
 
@@ -41,21 +52,46 @@ export default function Projects() {
       .catch(() => setError(true))
   }, [])
 
+  const totalStars = repos?.reduce((sum, repo) => sum + repo.stargazers_count, 0) ?? 0
+  const totalForks = repos?.reduce((sum, repo) => sum + repo.forks_count, 0) ?? 0
+  const languages = repos?.map((repo) => repo.language).filter((l): l is string => l !== null) ?? []
+
   return (
     <div className="bento-grid">
       <section className="bento-tile bento-page-header">
-        <span className="bento-tag">🚀 Projects</span>
-        <h1>Dự án trên GitHub</h1>
-        <p>Một số repository gần đây của tôi, chủ yếu xoay quanh ASP.NET Core + React.</p>
+        <div className="bento-page-header-text">
+          <span className="bento-tag">🚀 Projects</span>
+          <h1>{t.projects.header}</h1>
+          <p>{t.projects.description}</p>
+        </div>
+        {repos && repos.length > 0 && (
+          <div className="bento-page-header-stats">
+            <LanguageBars languages={languages} title={t.projects.languagesTitle} />
+            <div className="repo-stat-grid">
+              <div className="repo-stat-cell">
+                <p className="repo-stat-value">{repos.length}</p>
+                <p className="repo-stat-label">{t.projects.totalRepos}</p>
+              </div>
+              <div className="repo-stat-cell">
+                <p className="repo-stat-value">{totalStars}</p>
+                <p className="repo-stat-label">{t.projects.totalStars}</p>
+              </div>
+              <div className="repo-stat-cell">
+                <p className="repo-stat-value">{totalForks}</p>
+                <p className="repo-stat-label">{t.projects.totalForks}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {error && (
         <p className="bento-error">
-          Không tải được danh sách dự án, ghé{' '}
+          {t.projects.loadError}{' '}
           <a href={greeting.githubProfile} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>{' '}
-          trực tiếp nhé.
+          {t.projects.loadErrorSuffix}
         </p>
       )}
 
@@ -68,10 +104,10 @@ export default function Projects() {
           rel="noopener noreferrer"
         >
           {repo.topics?.includes('wip') && (
-            <span className="bento-tag bento-tag-wip">🚧 Đang phát triển</span>
+            <span className="bento-tag bento-tag-wip">{t.projects.wip}</span>
           )}
           <h3>{repo.name}</h3>
-          <p>{repo.description ?? 'Chưa có mô tả.'}</p>
+          <p>{repo.description ?? t.projects.noDescription}</p>
           <div className="bento-meta bento-project-meta">
             {repo.language && <span className="stat-chip">{repo.language}</span>}
             <span className="stat-chip">
@@ -84,7 +120,7 @@ export default function Projects() {
               <IssueIcon /> {repo.open_issues_count}
             </span>
             <span className="stat-chip">
-              <ClockIcon /> {timeAgo(repo.pushed_at)}
+              <ClockIcon /> {timeAgo(repo.pushed_at, lang)}
             </span>
           </div>
         </a>

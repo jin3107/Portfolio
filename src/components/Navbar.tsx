@@ -1,28 +1,34 @@
 import { NavLink } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
-import { greeting } from '../data/portfolio'
+import LanguageToggle from './LanguageToggle'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   isActive ? 'navbar-link active' : 'navbar-link'
 
 export default function Navbar() {
+  const { t } = useLanguage()
+
   return (
     <header className="navbar">
       <NavLink to="/" className="navbar-logo">
-        {greeting.nickname}
+        {t.greeting.nickname}
       </NavLink>
       <nav className="navbar-links">
         <NavLink to="/" end className={navLinkClass}>
-          Home
+          {t.nav.home}
         </NavLink>
         <NavLink to="/projects" className={navLinkClass}>
-          Projects
+          {t.nav.projects}
         </NavLink>
         <NavLink to="/contact" className={navLinkClass}>
-          Contact
+          {t.nav.contact}
         </NavLink>
       </nav>
-      <ThemeToggle />
+      <div className="navbar-actions">
+        <LanguageToggle />
+        <ThemeToggle />
+      </div>
     </header>
   )
 }

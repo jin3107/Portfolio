@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { greeting } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 
 type Stats = {
   publicRepos: number
@@ -11,6 +12,7 @@ type Stats = {
 const githubUsername = greeting.githubProfile.replace(/\/$/, '').split('/').pop()
 
 export default function GithubStats() {
+  const { t } = useLanguage()
   const [stats, setStats] = useState<Stats | null>(null)
   const [error, setError] = useState(false)
 
@@ -37,7 +39,7 @@ export default function GithubStats() {
     { label: 'Public Repos', value: stats.publicRepos },
     { label: 'Followers', value: stats.followers },
     { label: 'Following', value: stats.following },
-    { label: 'Trên GitHub từ', value: stats.memberSince },
+    { label: t.githubStats.memberSince, value: stats.memberSince },
   ]
 
   return (
