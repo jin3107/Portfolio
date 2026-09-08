@@ -4,12 +4,17 @@ import avatar from '../assets/chibiboy.jpg'
 import { education as educationLink } from '../data/portfolio'
 import { useLanguage } from '../i18n/LanguageContext'
 
+const SKILL_PASTELS = ['pastel-green', 'pastel-yellow', 'pastel-pink']
+const SKILL_TILTS = ['tilt-neg', 'tilt-pos', 'tilt-neg']
+
 export default function Home() {
   const { t } = useLanguage()
 
   return (
     <div className="bento-grid">
-      <section className="bento-tile bento-hero">
+      <section className="bento-tile bento-hero pastel-cream">
+        <div className="hero-dot-grid" aria-hidden="true" />
+        <div className="hero-star" aria-hidden="true" />
         <div className="hero-top">
           <img className="hero-avatar" src={avatar} alt="" aria-hidden="true" />
           <div>
@@ -21,13 +26,16 @@ export default function Home() {
         <SocialLinks />
       </section>
 
-      <section className="bento-tile bento-stats">
+      <section className="bento-tile bento-stats pastel-blue">
         <span className="bento-tag">🐙 GitHub</span>
         <GithubStats />
       </section>
 
-      {t.skills.map((skill) => (
-        <section className="bento-tile bento-skill" key={skill.title}>
+      {t.skills.map((skill, index) => (
+        <section
+          className={`bento-tile bento-skill ${SKILL_PASTELS[index % SKILL_PASTELS.length]} ${SKILL_TILTS[index % SKILL_TILTS.length]}`}
+          key={skill.title}
+        >
           <h3>{skill.title}</h3>
           <p className="bento-skill-highlight">{skill.highlight}</p>
           <ul className="tag-list">
@@ -41,7 +49,7 @@ export default function Home() {
       ))}
 
       <a
-        className="bento-tile bento-edu"
+        className="bento-tile bento-edu pastel-cream tilt-neg"
         href={educationLink.link}
         target="_blank"
         rel="noopener noreferrer"
@@ -52,7 +60,7 @@ export default function Home() {
         <p className="bento-meta">{t.education.duration}</p>
       </a>
 
-      <section className="bento-tile bento-exp">
+      <section className="bento-tile bento-exp pastel-blue tilt-pos">
         <span className="bento-tag">{t.experience.label}</span>
         <h3>{t.experience.title}</h3>
         <p>{t.experience.company}</p>

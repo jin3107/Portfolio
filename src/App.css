@@ -1,15 +1,140 @@
+.page-main {
+  flex: 1;
+  display: flex;
+}
+
+.page-main .bento-grid {
+  width: 100%;
+  margin: auto 0;
+}
+
+/* Pastel tile fills, assigned per index in each page's own JSX (not CSS structural
+   selectors) so colors never depend on sibling tag mix-ups.
+   Selector is doubled up with .bento-tile so specificity beats the plain
+   .bento-tile { background: var(--code-bg) } rule regardless of source order. */
+.bento-tile.pastel-pink {
+  background: var(--pink);
+}
+.bento-tile.pastel-blue {
+  background: var(--blue);
+}
+.bento-tile.pastel-green {
+  background: var(--green);
+}
+.bento-tile.pastel-yellow {
+  background: var(--yellow);
+}
+.bento-tile.pastel-cream {
+  background: var(--cream);
+}
+
+:root[data-theme='dark'] .bento-tile.pastel-pink,
+:root[data-theme='dark'] .bento-tile.pastel-blue,
+:root[data-theme='dark'] .bento-tile.pastel-green,
+:root[data-theme='dark'] .bento-tile.pastel-yellow,
+:root[data-theme='dark'] .bento-tile.pastel-cream {
+  background: var(--code-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .bento-tile.pastel-pink,
+  :root:not([data-theme='light']) .bento-tile.pastel-blue,
+  :root:not([data-theme='light']) .bento-tile.pastel-green,
+  :root:not([data-theme='light']) .bento-tile.pastel-yellow,
+  :root:not([data-theme='light']) .bento-tile.pastel-cream {
+    background: var(--code-bg);
+  }
+}
+
+/* Tilt decorations — atoms are sacred, composition is free.
+   Applied via explicit classes from JSX index arrays, never nth-of-type
+   (siblings mix tag types, so structural selectors miscount). */
+.tilt-neg {
+  transform: rotate(-1.5deg);
+}
+.tilt-pos {
+  transform: rotate(1.5deg);
+}
+.tilt-neg:hover {
+  transform: rotate(-1.5deg) translate(-2px, -2px);
+}
+.tilt-pos:hover {
+  transform: rotate(1.5deg) translate(-2px, -2px);
+}
+
+/* The lone round shape, pinned to stat cards */
+.stat-deco-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+
+/* Hero decorations: faint dot-grid + a star-burst puncturing the corner */
+.bento-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background-image: radial-gradient(circle, var(--border) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-star {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  background: var(--yellow);
+  border: var(--border-w-sm) solid var(--border);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-top,
+.hero-subtitle,
+.social-links {
+  position: relative;
+  z-index: 2;
+}
+
 /* Navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-w) solid var(--border);
+  background: var(--bg);
 }
 
 .navbar-logo {
   font-family: var(--heading);
-  font-weight: 700;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
   font-size: 18px;
   color: var(--text-h);
   text-decoration: none;
@@ -23,10 +148,13 @@
 .navbar-link {
   color: var(--text);
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
 }
 
 .navbar-link.active {
@@ -37,13 +165,13 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .theme-toggle {
-  border: 1px solid var(--border);
+  border: var(--border-w-sm) solid var(--border);
   background: var(--code-bg);
-  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
   width: 36px;
   height: 36px;
   font-size: 16px;
@@ -52,14 +180,15 @@
 }
 
 .lang-toggle {
-  border: 1px solid var(--border);
+  border: var(--border-w-sm) solid var(--border);
   background: var(--code-bg);
+  box-shadow: var(--shadow-sm);
   color: var(--text-h);
-  border-radius: var(--radius-sm);
+  font-family: var(--mono);
   width: 36px;
   height: 36px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   line-height: 1;
 }
@@ -76,25 +205,40 @@
 
 .bento-tile {
   grid-column: span 1;
-  border: 1px solid var(--border);
+  border: var(--border-w) solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
   background: var(--code-bg);
+  box-shadow: var(--shadow);
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .bento-tile:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--black);
+}
+
+:root[data-theme='dark'] .bento-tile:hover {
+  box-shadow: 10px 10px 0 var(--yellow);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .bento-tile:hover {
+    box-shadow: 10px 10px 0 var(--yellow);
+  }
 }
 
 .bento-tile h3 {
   margin: 0 0 8px;
   font-size: 19px;
+  font-family: var(--heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: var(--text-h);
 }
 
@@ -107,22 +251,29 @@
 .bento-tag {
   display: inline-block;
   width: fit-content;
+  font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
+  letter-spacing: 0.08em;
+  color: var(--text-h);
   background: var(--accent-bg);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
+  border: var(--border-w-sm) solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 5px 12px;
+  border-radius: 999px;
   margin-bottom: 12px;
 }
 
 .bento-meta {
   margin-top: auto;
   padding-top: 8px;
-  font-size: 13px;
-  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-h);
 }
 
 .bento-page-header {
@@ -166,17 +317,21 @@
 
 .language-bars-title {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--text-h);
 }
 
 .language-bars-track {
   display: flex;
   width: 100%;
-  height: 8px;
-  border-radius: 999px;
+  height: 10px;
+  border: var(--border-w-sm) solid var(--border);
   overflow: hidden;
-  background: var(--border);
+  background: var(--bg);
 }
 
 .language-bars-segment {
@@ -214,30 +369,32 @@
 }
 
 .repo-stat-cell {
+  position: relative;
   flex: 1;
   text-align: center;
+  padding-top: 4px;
 }
 
 .repo-stat-value {
   margin: 0;
+  font-family: var(--heading);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-h);
 }
 
 .repo-stat-label {
   margin: 2px 0 0;
-  font-size: 12px;
+  font-family: var(--mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
   color: var(--text);
 }
 
 .bento-error {
   grid-column: 1 / -1;
-}
-
-/* Hero */
-.bento-hero {
-  background: linear-gradient(155deg, var(--accent-bg), var(--code-bg) 55%);
 }
 
 .hero-top {
@@ -252,20 +409,27 @@
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--accent);
+  border: var(--border-w-sm) solid var(--border);
 }
 
 .hero-name {
   margin: 0;
   font-size: 32px;
-  line-height: 1.2;
-  letter-spacing: -0.6px;
+  line-height: 0.95;
+  font-family: var(--heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
   color: var(--text-h);
 }
 
 .hero-nickname {
-  font-style: italic;
-  margin: 4px 0 0;
+  font-family: var(--mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  margin: 6px 0 0;
 }
 
 .hero-subtitle {
@@ -282,10 +446,14 @@
 
 .social-link {
   padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
+  border: var(--border-w-sm) solid var(--black);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
   background: var(--social-color);
   text-decoration: none;
 }
@@ -299,32 +467,39 @@
 }
 
 .github-stats-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 14px 8px;
-  border-radius: var(--radius-sm);
+  border: var(--border-w-sm) solid var(--border);
+  box-shadow: var(--shadow-sm);
   background: var(--bg);
-  border: 1px solid var(--border);
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .github-stats-card:hover {
+  transform: translate(-2px, -2px);
   box-shadow: var(--shadow);
 }
 
 .github-stats-value {
+  font-family: var(--heading);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-h);
   margin: 0;
 }
 
 .github-stats-label {
-  font-size: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin: 4px 0 0;
   text-align: center;
   color: var(--text);
@@ -345,10 +520,14 @@
 }
 
 .tag-pill {
-  font-size: 13px;
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: var(--border-w-sm) solid var(--border);
   background: var(--bg);
 }
 
@@ -363,7 +542,9 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--text);
 }
@@ -374,8 +555,8 @@
 }
 
 .bento-tag-wip {
-  color: #b45309;
-  background: rgba(217, 119, 6, 0.15);
+  color: var(--black);
+  background: var(--yellow);
 }
 
 /* Contact */
@@ -387,10 +568,15 @@
   align-self: flex-start;
   margin-top: 8px;
   padding: 10px 20px;
-  border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
+  border: var(--border-w-sm) solid var(--black);
+  box-shadow: var(--shadow-sm);
+  border-radius: 0;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: var(--mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   text-decoration: none;
   white-space: nowrap;
 }

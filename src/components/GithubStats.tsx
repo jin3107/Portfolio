@@ -35,6 +35,8 @@ export default function GithubStats() {
 
   if (error || !stats) return null
 
+  const dotColors = ['var(--pink)', 'var(--blue)', 'var(--green)', 'var(--yellow)']
+
   const cards = [
     { label: 'Public Repos', value: stats.publicRepos },
     { label: 'Followers', value: stats.followers },
@@ -44,7 +46,7 @@ export default function GithubStats() {
 
   return (
     <div className="github-stats-grid">
-      {cards.map((card) => (
+      {cards.map((card, index) => (
         <a
           key={card.label}
           className="github-stats-card"
@@ -52,6 +54,11 @@ export default function GithubStats() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <span
+            className="stat-deco-dot"
+            style={{ background: dotColors[index % dotColors.length] }}
+            aria-hidden="true"
+          />
           <p className="github-stats-value">{card.value}</p>
           <p className="github-stats-label">{card.label}</p>
         </a>

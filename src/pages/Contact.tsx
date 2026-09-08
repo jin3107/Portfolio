@@ -13,7 +13,7 @@ export default function Contact() {
         <p>{t.contact.description}</p>
       </section>
 
-      <div className="bento-tile bento-contact-card">
+      <div className="bento-tile bento-contact-card pastel-yellow">
         <h3>{t.contact.emailLabel}</h3>
         <p>{contact.email}</p>
         <a className="contact-btn" href={`mailto:${contact.email}`}>
@@ -22,7 +22,7 @@ export default function Contact() {
       </div>
 
       <a
-        className="bento-tile bento-contact-card"
+        className="bento-tile bento-contact-card pastel-blue"
         href={contact.address.mapLink}
         target="_blank"
         rel="noopener noreferrer"
@@ -31,7 +31,7 @@ export default function Contact() {
         <p>{t.contact.addressSubtitle}</p>
       </a>
 
-      <div className="bento-tile bento-contact-card">
+      <div className="bento-tile bento-contact-card pastel-pink">
         <h3>{t.contact.socialLabel}</h3>
         <SocialLinks />
       </div>

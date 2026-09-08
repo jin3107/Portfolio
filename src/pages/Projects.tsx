@@ -21,6 +21,8 @@ type Repo = {
 
 const githubUsername = greeting.githubProfile.replace(/\/$/, '').split('/').pop()
 
+const PROJECT_PASTELS = ['pastel-green', 'pastel-blue', 'pastel-cream']
+
 function timeAgo(dateString: string, lang: Lang) {
   const days = Math.floor((Date.now() - new Date(dateString).getTime()) / 86_400_000)
   if (lang === 'vi') {
@@ -69,14 +71,17 @@ export default function Projects() {
             <LanguageBars languages={languages} title={t.projects.languagesTitle} />
             <div className="repo-stat-grid">
               <div className="repo-stat-cell">
+                <span className="stat-deco-dot" style={{ background: 'var(--pink)' }} aria-hidden="true" />
                 <p className="repo-stat-value">{repos.length}</p>
                 <p className="repo-stat-label">{t.projects.totalRepos}</p>
               </div>
               <div className="repo-stat-cell">
+                <span className="stat-deco-dot" style={{ background: 'var(--yellow)' }} aria-hidden="true" />
                 <p className="repo-stat-value">{totalStars}</p>
                 <p className="repo-stat-label">{t.projects.totalStars}</p>
               </div>
               <div className="repo-stat-cell">
+                <span className="stat-deco-dot" style={{ background: 'var(--green)' }} aria-hidden="true" />
                 <p className="repo-stat-value">{totalForks}</p>
                 <p className="repo-stat-label">{t.projects.totalForks}</p>
               </div>
@@ -95,10 +100,10 @@ export default function Projects() {
         </p>
       )}
 
-      {repos?.map((repo) => (
+      {repos?.map((repo, index) => (
         <a
           key={repo.id}
-          className="bento-tile bento-project"
+          className={`bento-tile bento-project ${PROJECT_PASTELS[index % PROJECT_PASTELS.length]}`}
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
