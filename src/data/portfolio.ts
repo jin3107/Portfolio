@@ -31,3 +31,6 @@ export const contact = {
       "https://www.google.com/maps/place/Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+H%E1%BB%8Dc+Ti%E1%BB%81n+Giang/@10.3654289,106.3569144,18z",
   },
 };
+
+// Put your CV at public/cv.pdf, then set enabled to true.
+export const cv = { file: "/cv.pdf", enabled: false };

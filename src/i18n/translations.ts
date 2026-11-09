@@ -28,6 +28,15 @@ export type Translation = {
     totalRepos: string
   }
   githubStats: { memberSince: string }
+  home: {
+    skillsTitle: string
+    projectsTitle: string
+    backgroundTitle: string
+    viewAll: string
+    ctaTitle: string
+    downloadCv: string
+    roles: string[]
+  }
 }
 
 export const translations: Record<Lang, Translation> = {
@@ -96,6 +105,15 @@ export const translations: Record<Lang, Translation> = {
       totalRepos: 'Số dự án',
     },
     githubStats: { memberSince: 'Trên GitHub từ' },
+    home: {
+      skillsTitle: 'Kỹ năng',
+      projectsTitle: 'Dự án nổi bật',
+      backgroundTitle: 'Nền tảng',
+      viewAll: 'Xem tất cả →',
+      ctaTitle: 'Cùng làm việc nhé?',
+      downloadCv: 'Tải CV',
+      roles: ['Backend Developer', 'ASP.NET Core', 'Clean Architecture', 'REST API'],
+    },
   },
   en: {
     nav: { home: 'Home', projects: 'Projects', contact: 'Contact' },
@@ -162,5 +180,14 @@ export const translations: Record<Lang, Translation> = {
       totalRepos: 'Repos',
     },
     githubStats: { memberSince: 'On GitHub since' },
+    home: {
+      skillsTitle: 'Skills',
+      projectsTitle: 'Featured projects',
+      backgroundTitle: 'Background',
+      viewAll: 'View all →',
+      ctaTitle: "Let's work together",
+      downloadCv: 'Download CV',
+      roles: ['Backend Developer', 'ASP.NET Core', 'Clean Architecture', 'REST API'],
+    },
   },
 }

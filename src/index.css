@@ -1,43 +1,46 @@
 :root {
-  --black: #000000;
+  /* Palette: neutral surfaces + a single accent */
+  --black: #111111;
   --white: #ffffff;
-  --offwhite: #fffdf5;
-  --pink: #fe90e8;
-  --blue: #c0f7fe;
-  --green: #99e885;
-  --yellow: #f7cb46;
-  --cream: #ffdc8b;
 
-  --text: #000000;
-  --text-h: #000000;
-  --bg: var(--offwhite);
-  --border: var(--black);
-  --code-bg: var(--white);
-  --accent: var(--pink);
-  --accent-bg: var(--blue);
-  --accent-border: var(--black);
-  --social-bg: var(--white);
+  --bg: #f7f5f9;
+  --card: #fdfcfe;
+  --border: #e4deea;
+  --text: #58525f;
+  --text-h: #1b1822;
+  --accent: #7a3e9d;
+  --accent-soft: #f0e8f5;
+  --on-accent: #ffffff;
 
-  --border-w: 4px;
-  --border-w-sm: 3px;
-  --shadow-x: 8px;
-  --shadow-x-sm: 4px;
-  --shadow: var(--shadow-x) var(--shadow-x) 0 var(--black);
-  --shadow-sm: var(--shadow-x-sm) var(--shadow-x-sm) 0 var(--black);
-  --shadow-hover: 6px 6px 0 var(--black);
+  /* Legacy aliases kept so existing rules keep working */
+  --code-bg: var(--card);
+  --accent-bg: var(--accent-soft);
+  --accent-border: var(--border);
+  --social-bg: var(--card);
+  --pink: #f472b6;
+  --blue: #60a5fa;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --cream: var(--card);
+  --offwhite: var(--bg);
 
-  --radius: 0;
-  --radius-sm: 0;
+  --border-w: 1px;
+  --border-w-sm: 1px;
+  --shadow: 0 1px 2px rgba(17, 17, 17, 0.05), 0 8px 24px rgba(17, 17, 17, 0.06);
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.06);
+  --shadow-hover: 0 2px 4px rgba(17, 17, 17, 0.06), 0 14px 32px rgba(17, 17, 17, 0.1);
+
+  --radius: 14px;
+  --radius-sm: 8px;
 
   --sans: 'Inter', system-ui, sans-serif;
   --heading: 'Inter', system-ui, sans-serif;
-  --mono: 'Space Grotesk', ui-monospace, monospace;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
 
   font-family: var(--sans);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: 0.18px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -53,41 +56,38 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --text: #ffffff;
-    --text-h: #ffffff;
-    --bg: var(--black);
-    --border: #ffffff;
-    --code-bg: #111111;
-    --accent: var(--yellow);
-    --accent-bg: #1f1f1f;
-    --accent-border: #ffffff;
-    --social-bg: #1a1a1a;
-    --shadow: var(--shadow-x) var(--shadow-x) 0 var(--yellow);
-    --shadow-sm: var(--shadow-x-sm) var(--shadow-x-sm) 0 var(--yellow);
-    --shadow-hover: 6px 6px 0 var(--yellow);
+    --bg: #0d0b10;
+    --card: #15121a;
+    --border: #2a2432;
+    --text: #a59fad;
+    --text-h: #eeebf2;
+    --accent: #b58ad6;
+    --accent-soft: #241a2e;
+    --on-accent: #0d0b10;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 14px 32px rgba(0, 0, 0, 0.5);
   }
 }
 
 :root[data-theme='dark'] {
-  --text: #ffffff;
-  --text-h: #ffffff;
-  --bg: var(--black);
-  --border: #ffffff;
-  --code-bg: #111111;
-  --accent: var(--yellow);
-  --accent-bg: #1f1f1f;
-  --accent-border: #ffffff;
-  --social-bg: #1a1a1a;
-  --shadow: var(--shadow-x) var(--shadow-x) 0 var(--yellow);
-  --shadow-sm: var(--shadow-x-sm) var(--shadow-x-sm) 0 var(--yellow);
-  --shadow-hover: 6px 6px 0 var(--yellow);
+  --bg: #0d0b10;
+  --card: #15121a;
+  --border: #2a2432;
+  --text: #a59fad;
+  --text-h: #eeebf2;
+  --accent: #b58ad6;
+  --accent-soft: #241a2e;
+  --on-accent: #0d0b10;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 14px 32px rgba(0, 0, 0, 0.5);
 }
 
 #root {
-  width: 1280px;
+  width: 1120px;
   max-width: 100%;
   margin: 0 auto;
-  border-inline: var(--border-w) solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -95,35 +95,55 @@
   background: var(--bg);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  /* transparent on purpose: html paints --bg, and an opaque body would hide the z-index:-1 backdrop layers */
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--heading);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 56px;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  margin: 32px 0;
+  font-size: 52px;
+  line-height: 1.08;
+  margin: 24px 0;
   @media (max-width: 1024px) {
     font-size: 36px;
-    margin: 20px 0;
+    margin: 16px 0;
   }
 }
 h2 {
-  font-size: 24px;
-  line-height: 1;
+  font-size: 26px;
+  line-height: 1.2;
   margin: 0 0 8px;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 p {
@@ -133,10 +153,11 @@ p {
 code {
   font-family: var(--mono);
   display: inline-flex;
-  border: var(--border-w-sm) solid var(--border);
+  border: 1px solid var(--border);
   color: var(--text-h);
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
-  background: var(--code-bg);
+  border-radius: var(--radius-sm);
+  background: var(--card);
 }

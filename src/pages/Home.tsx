@@ -1,7 +1,9 @@
 import SocialLinks from '../components/SocialLinks'
 import GithubStats from '../components/GithubStats'
+import FeaturedProjects from '../components/FeaturedProjects'
+import TypedRole from '../components/TypedRole'
 import avatar from '../assets/chibiboy.jpg'
-import { education as educationLink } from '../data/portfolio'
+import { education as educationLink, contact } from '../data/portfolio'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const SKILL_PASTELS = ['pastel-green', 'pastel-yellow', 'pastel-pink']
@@ -22,14 +24,23 @@ export default function Home() {
             <p className="hero-nickname">( {t.greeting.nickname} )</p>
           </div>
         </div>
+        <p className="hero-prompt">
+          <span className="prompt-sign">&gt;</span>
+          <TypedRole roles={t.home.roles} />
+        </p>
         <p className="hero-subtitle">{t.greeting.subtitle}</p>
-        <SocialLinks />
+        <SocialLinks showCv />
       </section>
 
       <section className="bento-tile bento-stats pastel-blue">
         <span className="bento-tag">🐙 GitHub</span>
         <GithubStats />
       </section>
+
+      <div className="bento-section-title">
+        <span className="section-index">01</span>
+        <h2>{t.home.skillsTitle}</h2>
+      </div>
 
       {t.skills.map((skill, index) => (
         <section
@@ -47,6 +58,13 @@ export default function Home() {
           </ul>
         </section>
       ))}
+
+      <FeaturedProjects />
+
+      <div className="bento-section-title">
+        <span className="section-index">03</span>
+        <h2>{t.home.backgroundTitle}</h2>
+      </div>
 
       <a
         className="bento-tile bento-edu pastel-cream tilt-neg"
@@ -66,6 +84,14 @@ export default function Home() {
         <p>{t.experience.company}</p>
         <p>{t.experience.description}</p>
         <p className="bento-meta">{t.experience.duration}</p>
+      </section>
+
+      <section className="bento-tile bento-cta">
+        <h2>{t.home.ctaTitle}</h2>
+        <p>{t.contact.description}</p>
+        <a className="contact-btn" href={`mailto:${contact.email}`}>
+          {t.contact.sendEmail}
+        </a>
       </section>
     </div>
   )
