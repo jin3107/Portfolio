@@ -8,70 +8,7 @@
   margin: auto 0;
 }
 
-/* Pastel tile fills, assigned per index in each page's own JSX (not CSS structural
-   selectors) so colors never depend on sibling tag mix-ups.
-   Selector is doubled up with .bento-tile so specificity beats the plain
-   .bento-tile { background: var(--code-bg) } rule regardless of source order. */
-.bento-tile.pastel-pink {
-  background: var(--pink);
-}
-.bento-tile.pastel-blue {
-  background: var(--blue);
-}
-.bento-tile.pastel-green {
-  background: var(--green);
-}
-.bento-tile.pastel-yellow {
-  background: var(--yellow);
-}
-.bento-tile.pastel-cream {
-  background: var(--cream);
-}
-
-:root[data-theme='dark'] .bento-tile.pastel-pink,
-:root[data-theme='dark'] .bento-tile.pastel-blue,
-:root[data-theme='dark'] .bento-tile.pastel-green,
-:root[data-theme='dark'] .bento-tile.pastel-yellow,
-:root[data-theme='dark'] .bento-tile.pastel-cream {
-  background: var(--code-bg);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .bento-tile.pastel-pink,
-  :root:not([data-theme='light']) .bento-tile.pastel-blue,
-  :root:not([data-theme='light']) .bento-tile.pastel-green,
-  :root:not([data-theme='light']) .bento-tile.pastel-yellow,
-  :root:not([data-theme='light']) .bento-tile.pastel-cream {
-    background: var(--code-bg);
-  }
-}
-
-/* Tilt decorations — atoms are sacred, composition is free.
-   Applied via explicit classes from JSX index arrays, never nth-of-type
-   (siblings mix tag types, so structural selectors miscount). */
-.tilt-neg {
-  transform: rotate(-1.5deg);
-}
-.tilt-pos {
-  transform: rotate(1.5deg);
-}
-.tilt-neg:hover {
-  transform: rotate(-1.5deg) translate(-2px, -2px);
-}
-.tilt-pos:hover {
-  transform: rotate(1.5deg) translate(-2px, -2px);
-}
-
-/* The lone round shape, pinned to stat cards */
-.stat-deco-dot {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-}
+/* Tilt classes intentionally have no styles (kept in JSX, flat look is more professional) */
 
 /* Hero decorations: faint dot-grid + a star-burst puncturing the corner */
 .bento-hero {
@@ -128,6 +65,9 @@
   padding: 20px 24px;
   border-bottom: var(--border-w) solid var(--border);
   background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .navbar-logo {
@@ -155,6 +95,11 @@
   letter-spacing: 0.06em;
   padding-bottom: 2px;
   border-bottom: 3px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.navbar-link:hover {
+  border-bottom-color: var(--accent);
 }
 
 .navbar-link.active {
@@ -169,6 +114,7 @@
 }
 
 .theme-toggle {
+  border-radius: var(--radius-sm);
   border: var(--border-w-sm) solid var(--border);
   background: var(--code-bg);
   box-shadow: var(--shadow-sm);
@@ -180,6 +126,7 @@
 }
 
 .lang-toggle {
+  border-radius: var(--radius-sm);
   border: var(--border-w-sm) solid var(--border);
   background: var(--code-bg);
   box-shadow: var(--shadow-sm);
@@ -197,7 +144,7 @@
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: minmax(140px, auto);
+  grid-auto-rows: auto;
   gap: 16px;
   padding: 40px 20px;
   text-align: left;
@@ -219,16 +166,16 @@
 
 .bento-tile:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 10px 10px 0 var(--black);
+  box-shadow: 8px 8px 0 var(--black);
 }
 
 :root[data-theme='dark'] .bento-tile:hover {
-  box-shadow: 10px 10px 0 var(--yellow);
+  box-shadow: 8px 8px 0 var(--yellow);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .bento-tile:hover {
-    box-shadow: 10px 10px 0 var(--yellow);
+    box-shadow: 8px 8px 0 var(--yellow);
   }
 }
 
@@ -405,8 +352,8 @@
 
 .hero-avatar {
   flex: 0 0 auto;
-  width: 64px;
-  height: 64px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   object-fit: cover;
   border: var(--border-w-sm) solid var(--border);
@@ -414,8 +361,8 @@
 
 .hero-name {
   margin: 0;
-  font-size: 32px;
-  line-height: 0.95;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1;
   font-family: var(--heading);
   font-weight: 900;
   text-transform: uppercase;
@@ -433,7 +380,10 @@
 }
 
 .hero-subtitle {
-  margin-top: 16px;
+  margin-top: 20px;
+  max-width: 60ch;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 .social-links {
@@ -444,7 +394,19 @@
   padding-top: 20px;
 }
 
+.social-link,
+.contact-btn {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.social-link:hover,
+.contact-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--black);
+}
+
 .social-link {
+  border-radius: var(--radius-sm);
   padding: 8px 16px;
   border: var(--border-w-sm) solid var(--black);
   box-shadow: var(--shadow-sm);
@@ -467,6 +429,7 @@
 }
 
 .github-stats-card {
+  border-radius: var(--radius-sm);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -570,7 +533,7 @@
   padding: 10px 20px;
   border: var(--border-w-sm) solid var(--black);
   box-shadow: var(--shadow-sm);
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   background: var(--yellow);
   color: var(--black);
   font-family: var(--mono);
@@ -625,4 +588,520 @@
   .bento-exp {
     grid-column: span 6;
   }
+}
+
+/* Section titles */
+.bento-section-title {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 16px;
+  padding-bottom: 8px;
+  border-bottom: var(--border-w-sm) solid var(--border);
+}
+
+.bento-section-title h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.section-index {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--black);
+}
+
+.section-link {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-h);
+  text-decoration: none;
+  border-bottom: 3px solid var(--accent);
+}
+
+.skill-number {
+  font-family: var(--heading);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--black);
+}
+
+:root[data-theme='dark'] .skill-number {
+  -webkit-text-stroke-color: var(--white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .skill-number {
+    -webkit-text-stroke-color: var(--white);
+  }
+}
+
+/* Closing CTA */
+.bento-cta {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  align-items: flex-start;
+  gap: 4px;
+  background: var(--black);
+  color: var(--white);
+}
+
+.bento-cta h2 {
+  color: var(--white);
+  font-size: clamp(26px, 4vw, 40px);
+  margin-bottom: 8px;
+}
+
+.bento-cta p {
+  max-width: 55ch;
+}
+
+@media (min-width: 640px) {
+  .bento-featured {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-featured {
+    grid-column: span 4;
+  }
+}
+
+/* Scroll reveal: pure CSS, runs on the compositor (no JS, no observers).
+   Browsers without scroll-driven animations (Firefox/Safari for now) just show everything.
+   fill-mode is "backwards" on purpose: "both" would pin transform and break the hover lift. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bento-tile,
+    .bento-section-title {
+      animation: reveal-up linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* ===== Clean developer theme layer ===== */
+.bento-tile,
+.bento-tile.pastel-pink,
+.bento-tile.pastel-blue,
+.bento-tile.pastel-green,
+.bento-tile.pastel-yellow,
+.bento-tile.pastel-cream {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.bento-tile:hover,
+:root[data-theme='dark'] .bento-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.bento-hero {
+  padding: 40px;
+}
+.hero-dot-grid,
+.hero-star,
+.stat-deco-dot {
+  display: none;
+}
+
+.hero-name {
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: -0.03em;
+}
+.hero-nickname {
+  text-transform: none;
+  color: var(--accent);
+}
+
+.bento-tile h3 {
+  text-transform: none;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.bento-tile p {
+  font-size: 16px;
+  color: var(--text);
+}
+.bento-meta {
+  text-transform: none;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.bento-tag,
+.tag-pill {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid transparent;
+  box-shadow: none;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+.tag-pill {
+  font-size: 13px;
+  padding: 4px 12px;
+}
+
+.bento-section-title {
+  border-bottom: 1px solid var(--border);
+  margin-top: 24px;
+}
+.section-index {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-size: 15px;
+}
+.section-link {
+  border-bottom: none;
+  color: var(--accent);
+  text-transform: none;
+  font-weight: 600;
+}
+.section-link:hover {
+  text-decoration: underline;
+}
+
+.skill-number,
+:root[data-theme='dark'] .skill-number,
+:root:not([data-theme='light']) .skill-number {
+  -webkit-text-stroke: 0;
+  color: var(--accent);
+  opacity: 0.35;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+/* Buttons: solid accent primary, quiet outline secondary */
+.social-link,
+.contact-btn {
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.social-link:hover,
+.contact-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.social-link.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+.social-link.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.theme-toggle,
+.lang-toggle {
+  border: 1px solid var(--border);
+  box-shadow: none;
+  background: var(--card);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.navbar-logo {
+  text-transform: none;
+  font-weight: 800;
+}
+.navbar-link {
+  text-transform: none;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+/* Stats */
+.github-stats-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.github-stats-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--accent);
+}
+.github-stats-label,
+.repo-stat-label,
+.language-bars-title {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+.language-bars-track {
+  border-color: var(--border);
+  border-radius: 999px;
+}
+
+/* CTA: always a terminal window, same in light and dark */
+.bento-cta.bento-tile {
+  position: relative;
+  background: #14101a;
+  border: 1px solid #3a2d4d;
+  color: #e8e8e3;
+}
+.bento-cta h2 {
+  color: #e8e8e3;
+  font-family: var(--mono);
+  font-size: clamp(22px, 3.4vw, 34px);
+}
+.bento-cta h2::before {
+  content: '→ ';
+  color: #b58ad6;
+}
+.bento-cta p {
+  color: #a59fad;
+  font-weight: 400;
+}
+.bento-cta .contact-btn {
+  background: #b58ad6;
+  color: #0d0b10;
+  border-color: #b58ad6;
+  font-family: var(--mono);
+}
+.bento-cta .contact-btn:hover {
+  border-color: #b58ad6;
+  filter: brightness(1.1);
+  box-shadow: none;
+}
+
+/* Page backdrop: one static grid, fixed layer, no repaint on scroll */
+#root {
+  background: transparent;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 0%, transparent 78%);
+}
+
+.bento-tile.bento-hero {
+  background: var(--card);
+}
+.bento-hero .hero-dot-grid {
+  display: block;
+  opacity: 0.7;
+  background-image: radial-gradient(circle, var(--border) 1.4px, transparent 1.4px);
+  background-size: 20px 20px;
+  -webkit-mask-image: linear-gradient(100deg, transparent 35%, #000 100%);
+  mask-image: linear-gradient(100deg, transparent 35%, #000 100%);
+}
+
+/* Terminal flavour */
+.navbar-logo::before {
+  content: '~/';
+  color: var(--accent);
+}
+.navbar-logo,
+.bento-section-title h2 {
+  font-family: var(--mono);
+}
+.bento-section-title h2 {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.section-index {
+  font-size: 14px;
+}
+.section-index::before {
+  content: '//';
+  margin-right: 4px;
+  opacity: 0.6;
+}
+
+.hero-prompt {
+  position: relative;
+  z-index: 2;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+.hero-prompt .prompt-sign {
+  color: var(--accent);
+  margin-right: 8px;
+}
+.hero-prompt .cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Mouse spotlight on tiles: only two CSS vars updated, only on the hovered tile */
+.bento-tile {
+  position: relative;
+}
+.bento-tile:not(.bento-cta)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 70%
+  );
+}
+.bento-tile:not(.bento-cta):hover::after {
+  opacity: 1;
+}
+
+.bento-tag-wip {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Animated network canvas sits above the static grid, below all content */
+.network-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Slightly translucent cards so the network faintly reads through them */
+.bento-tile:not(.bento-cta) {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+.bento-tile.bento-hero:not(.bento-cta),
+.bento-tile.pastel-pink:not(.bento-cta),
+.bento-tile.pastel-blue:not(.bento-cta),
+.bento-tile.pastel-green:not(.bento-cta),
+.bento-tile.pastel-yellow:not(.bento-cta),
+.bento-tile.pastel-cream:not(.bento-cta) {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* ===== Supporting hues: muted colours around the purple core =====
+   Purple stays the brand colour (nav, section titles, buttons, network).
+   Each tile picks one supporting hue via its existing pastel-* class. */
+:root {
+  --hue-purple: var(--accent);
+  --hue-teal: #1f9d8f;
+  --hue-amber: #d98e1a;
+  --hue-rose: #d6558a;
+  --hue-blue: #3b82c4;
+}
+:root[data-theme='dark'] {
+  --hue-teal: #4fd1c1;
+  --hue-amber: #f0b429;
+  --hue-rose: #f27aa8;
+  --hue-blue: #6aa9ee;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --hue-teal: #4fd1c1;
+    --hue-amber: #f0b429;
+    --hue-rose: #f27aa8;
+    --hue-blue: #6aa9ee;
+  }
+}
+
+.bento-tile.pastel-cream {
+  --tile-hue: var(--hue-purple);
+}
+.bento-tile.pastel-green {
+  --tile-hue: var(--hue-teal);
+}
+.bento-tile.pastel-yellow {
+  --tile-hue: var(--hue-amber);
+}
+.bento-tile.pastel-pink {
+  --tile-hue: var(--hue-rose);
+}
+.bento-tile.pastel-blue {
+  --tile-hue: var(--hue-blue);
+}
+
+.bento-tile[class*='pastel-'] {
+  border-top: 3px solid var(--tile-hue);
+}
+.bento-tile[class*='pastel-'] .bento-tag,
+.bento-tile[class*='pastel-'] .tag-pill {
+  background: color-mix(in srgb, var(--tile-hue) 14%, transparent);
+  color: color-mix(in srgb, var(--tile-hue) 72%, var(--text-h));
+}
+.bento-tile[class*='pastel-'] h3 {
+  color: var(--text-h);
+}
+.bento-tile[class*='pastel-']::after {
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--tile-hue) 16%, transparent),
+    transparent 70%
+  ) !important;
+}
+.bento-tile[class*='pastel-']:hover {
+  border-color: color-mix(in srgb, var(--tile-hue) 50%, var(--border));
+  border-top-color: var(--tile-hue);
+}
+.bento-tile[class*='pastel-'] .stat-chip svg {
+  color: var(--tile-hue);
+  opacity: 1;
 }
