@@ -1,6 +1,14 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import { Download, Mail } from 'lucide-react'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6'
 import { socialLinks, cv } from '../data/portfolio'
 import { useLanguage } from '../i18n/LanguageContext'
+
+const iconMap: Record<string, ReactNode> = {
+  GitHub: <FaGithub size={16} />,
+  LinkedIn: <FaLinkedinIn size={16} />,
+  Gmail: <Mail size={16} />,
+}
 
 export default function SocialLinks({ showCv = false }: { showCv?: boolean }) {
   const { t } = useLanguage()
@@ -8,7 +16,7 @@ export default function SocialLinks({ showCv = false }: { showCv?: boolean }) {
     <div className="social-links">
       {showCv && cv.enabled && (
         <a className="social-link btn-primary" href={cv.file} download>
-          {t.home.downloadCv}
+          <Download size={16} /> {t.home.downloadCv}
         </a>
       )}
       {socialLinks.map((social) => (
@@ -20,7 +28,7 @@ export default function SocialLinks({ showCv = false }: { showCv?: boolean }) {
           className="social-link"
           style={{ '--social-color': social.color } as CSSProperties}
         >
-          {social.name}
+          {iconMap[social.name]} {social.name}
         </a>
       ))}
     </div>
