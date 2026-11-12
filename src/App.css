@@ -1105,3 +1105,21 @@ body::before {
   color: var(--tile-hue);
   opacity: 1;
 }
+
+/* Icons inline with text */
+.bento-tag,
+.bento-tag-wip,
+.section-link,
+.social-link,
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.theme-toggle {
+  justify-content: center;
+}
+
+.theme-toggle {
+  color: var(--text-h);
+}

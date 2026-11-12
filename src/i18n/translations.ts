@@ -72,7 +72,7 @@ export const translations: Record<Lang, Translation> = {
       school: 'Trường Đại học Tiền Giang',
       subtitle: 'Công nghệ thông tin - Định hướng Phát triển Web',
       duration: 'Sinh viên năm 4',
-      label: '🎓 Học vấn',
+      label: 'Học vấn',
     },
     experience: {
       title: 'Trưởng nhóm - Đồ án môn Công nghệ phần mềm',
@@ -80,7 +80,7 @@ export const translations: Record<Lang, Translation> = {
       duration: 'Học kỳ môn Công nghệ phần mềm',
       description:
         'Dẫn dắt một nhóm sinh viên xây dựng đồ án quản lý phòng khám (tiền thân của dự án QuanLyPhongKham), phụ trách chính phần backend. Hiện đang tiếp tục migrate dự án từ Repository Pattern sang Clean Architecture.',
-      label: '🧑‍💻 Kinh nghiệm',
+      label: 'Kinh nghiệm',
     },
     contact: {
       title: 'Muốn trao đổi công việc hoặc dự án?',
@@ -95,7 +95,7 @@ export const translations: Record<Lang, Translation> = {
     projects: {
       header: 'Dự án trên GitHub',
       description: 'Một số repository gần đây của tôi, chủ yếu xoay quanh ASP.NET Core + React.',
-      wip: '🚧 Đang phát triển',
+      wip: 'Đang phát triển',
       noDescription: 'Chưa có mô tả.',
       loadError: 'Không tải được danh sách dự án, ghé',
       loadErrorSuffix: 'trực tiếp nhé.',
@@ -109,7 +109,7 @@ export const translations: Record<Lang, Translation> = {
       skillsTitle: 'Kỹ năng',
       projectsTitle: 'Dự án nổi bật',
       backgroundTitle: 'Nền tảng',
-      viewAll: 'Xem tất cả →',
+      viewAll: 'Xem tất cả',
       ctaTitle: 'Cùng làm việc nhé?',
       downloadCv: 'Tải CV',
       roles: ['Backend Developer', 'ASP.NET Core', 'Clean Architecture', 'REST API'],
@@ -147,7 +147,7 @@ export const translations: Record<Lang, Translation> = {
       school: 'Tien Giang University',
       subtitle: 'Information Technology - Web Development track',
       duration: '4th-year student',
-      label: '🎓 Education',
+      label: 'Education',
     },
     experience: {
       title: 'Team Lead - Software Engineering Course Project',
@@ -155,7 +155,7 @@ export const translations: Record<Lang, Translation> = {
       duration: 'Software Engineering course term',
       description:
         'Led a student team building a clinic management project (predecessor of the QuanLyPhongKham project), mainly responsible for the backend. Currently migrating the project from Repository Pattern to Clean Architecture.',
-      label: '🧑‍💻 Experience',
+      label: 'Experience',
     },
     contact: {
       title: 'Want to talk about work or a project?',
@@ -170,7 +170,7 @@ export const translations: Record<Lang, Translation> = {
     projects: {
       header: 'GitHub Projects',
       description: 'Some of my recent repositories, mostly around ASP.NET Core + React.',
-      wip: '🚧 Work in progress',
+      wip: 'Work in progress',
       noDescription: 'No description yet.',
       loadError: 'Failed to load the project list, check',
       loadErrorSuffix: 'directly instead.',
@@ -184,7 +184,7 @@ export const translations: Record<Lang, Translation> = {
       skillsTitle: 'Skills',
       projectsTitle: 'Featured projects',
       backgroundTitle: 'Background',
-      viewAll: 'View all →',
+      viewAll: 'View all',
       ctaTitle: "Let's work together",
       downloadCv: 'Download CV',
       roles: ['Backend Developer', 'ASP.NET Core', 'Clean Architecture', 'REST API'],

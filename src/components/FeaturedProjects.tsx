@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { greeting } from '../data/portfolio'
 import { StarIcon, ForkIcon } from './icons'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -48,7 +49,7 @@ export default function FeaturedProjects() {
         <span className="section-index">02</span>
         <h2>{t.home.projectsTitle}</h2>
         <Link to="/projects" className="section-link">
-          {t.home.viewAll}
+          {t.home.viewAll} <ArrowRight size={14} />
         </Link>
       </div>
       {repos.map((repo, index) => (

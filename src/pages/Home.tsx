@@ -1,3 +1,5 @@
+import { GraduationCap, Briefcase } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa6'
 import SocialLinks from '../components/SocialLinks'
 import GithubStats from '../components/GithubStats'
 import FeaturedProjects from '../components/FeaturedProjects'
@@ -33,7 +35,7 @@ export default function Home() {
       </section>
 
       <section className="bento-tile bento-stats pastel-blue">
-        <span className="bento-tag">🐙 GitHub</span>
+        <span className="bento-tag"><FaGithub size={14} /> GitHub</span>
         <GithubStats />
       </section>
 
@@ -72,14 +74,14 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span className="bento-tag">{t.education.label}</span>
+        <span className="bento-tag"><GraduationCap size={14} /> {t.education.label}</span>
         <h3>{t.education.school}</h3>
         <p>{t.education.subtitle}</p>
         <p className="bento-meta">{t.education.duration}</p>
       </a>
 
       <section className="bento-tile bento-exp pastel-blue tilt-pos">
-        <span className="bento-tag">{t.experience.label}</span>
+        <span className="bento-tag"><Briefcase size={14} /> {t.experience.label}</span>
         <h3>{t.experience.title}</h3>
         <p>{t.experience.company}</p>
         <p>{t.experience.description}</p>

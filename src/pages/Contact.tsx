@@ -1,3 +1,4 @@
+import { Mail } from 'lucide-react'
 import SocialLinks from '../components/SocialLinks'
 import { contact } from '../data/portfolio'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -8,7 +9,7 @@ export default function Contact() {
   return (
     <div className="bento-grid">
       <section className="bento-tile bento-page-header">
-        <span className="bento-tag">✉️ Contact</span>
+        <span className="bento-tag"><Mail size={14} /> Contact</span>
         <h1>{t.contact.title}</h1>
         <p>{t.contact.description}</p>
       </section>

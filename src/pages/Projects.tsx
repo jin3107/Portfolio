@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Rocket, Construction } from 'lucide-react'
 import { greeting } from '../data/portfolio'
 import { StarIcon, ForkIcon, IssueIcon, ClockIcon } from '../components/icons'
 import LanguageBars from '../components/LanguageBars'
@@ -62,7 +63,7 @@ export default function Projects() {
     <div className="bento-grid">
       <section className="bento-tile bento-page-header">
         <div className="bento-page-header-text">
-          <span className="bento-tag">🚀 Projects</span>
+          <span className="bento-tag"><Rocket size={14} /> Projects</span>
           <h1>{t.projects.header}</h1>
           <p>{t.projects.description}</p>
         </div>
@@ -109,7 +110,7 @@ export default function Projects() {
           rel="noopener noreferrer"
         >
           {repo.topics?.includes('wip') && (
-            <span className="bento-tag bento-tag-wip">{t.projects.wip}</span>
+            <span className="bento-tag bento-tag-wip"><Construction size={14} /> {t.projects.wip}</span>
           )}
           <h3>{repo.name}</h3>
           <p>{repo.description ?? t.projects.noDescription}</p>
