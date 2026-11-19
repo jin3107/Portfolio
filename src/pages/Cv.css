@@ -1,0 +1,216 @@
+/* CV: plain, ATS-friendly, black on white, one muted accent. Always light, regardless of site theme. */
+.cv-root {
+  --cv-ink: #1a1a1a;
+  --cv-muted: #5b5b5b;
+  --cv-accent: #1f3a5f;
+  --cv-rule: #cfd4da;
+
+  min-height: 100vh;
+  padding: 24px 12px 48px;
+  background: #e9ebee;
+  color: var(--cv-ink);
+  font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+}
+
+.cv-toolbar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.cv-toolbar a,
+.cv-toolbar button {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 14px;
+  border: 1px solid var(--cv-accent);
+  border-radius: 6px;
+  background: var(--cv-accent);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cv-toolbar button {
+  background: #fff;
+  color: var(--cv-accent);
+}
+
+.cv-sheet {
+  box-sizing: border-box;
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm 15mm;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  font-size: 10pt;
+  line-height: 1.4;
+}
+
+.cv-sheet h1 {
+  margin: 0;
+  font-size: 24pt;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  color: var(--cv-ink);
+}
+.cv-title {
+  margin: 3px 0 6px;
+  font-size: 11.5pt;
+  font-weight: 600;
+  color: var(--cv-accent);
+}
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--cv-accent);
+  font-size: 9.5pt;
+  color: var(--cv-muted);
+}
+.cv-contact a,
+.cv-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cv-sheet section {
+  margin-top: 11px;
+}
+.cv-sheet h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--cv-rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+.cv-sheet p {
+  margin: 0;
+}
+
+.cv-item {
+  margin-bottom: 7px;
+  break-inside: avoid;
+}
+.cv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.cv-sheet h3 {
+  margin: 0;
+  font-size: 10.5pt;
+  font-weight: 700;
+}
+.cv-role {
+  font-weight: 400;
+  color: var(--cv-muted);
+}
+.cv-link,
+.cv-date {
+  flex-shrink: 0;
+  font-size: 9pt;
+  color: var(--cv-muted);
+}
+.cv-stack {
+  margin: 1px 0 2px;
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--cv-muted);
+}
+.cv-stack .cv-role {
+  font-weight: 400;
+  font-style: italic;
+}
+.cv-sheet ul {
+  margin: 2px 0 0;
+  padding-left: 16px;
+}
+.cv-sheet li {
+  margin-bottom: 1.5px;
+}
+
+.cv-skills {
+  margin: 0;
+}
+.cv-skills > div {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.cv-skills dt {
+  flex: 0 0 125px;
+  font-weight: 700;
+}
+.cv-skills dd {
+  margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .cv-sheet {
+    padding: 20px 16px;
+    min-height: 0;
+    font-size: 10.5pt;
+  }
+  .cv-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .cv-skills > div {
+    flex-direction: column;
+    gap: 0;
+  }
+  .cv-skills dt {
+    flex: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  .cv-root {
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+  }
+  .cv-toolbar {
+    display: none;
+  }
+  .cv-sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Neutralise the app shell (fixed-width #root, theme background) while the CV is shown. */
+:root:has(.cv-root),
+:root:has(.cv-root) body {
+  background: #e9ebee !important;
+  color-scheme: light;
+}
+:root:has(.cv-root) #root {
+  width: 100%;
+  min-height: 0;
+  background: transparent;
+}
+@media print {
+  :root:has(.cv-root),
+  :root:has(.cv-root) body {
+    background: #fff !important;
+  }
+}
