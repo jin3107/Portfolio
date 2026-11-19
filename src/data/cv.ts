@@ -38,10 +38,10 @@ export const cvContact = {
 export const cvContent: Record<Lang, CvContent> = {
   en: {
     name: 'Huynh Tan Chuong',
-    title: 'Backend Developer Intern — ASP.NET Core (.NET 8)',
+    title: 'Backend Developer Intern (ASP.NET Core, .NET 8)',
     location: 'Tien Giang, Vietnam',
     summary:
-      'Final-year IT student looking for a Backend (.NET) internship. I have built three full-stack apps end to end — REST API, database, authentication, background jobs, Docker — and published all of them on GitHub. I like clean layering, readable code, and learning by shipping.',
+      'Final-year IT student looking for a Backend (.NET) internship. I have built three full-stack apps end to end (REST API, database, authentication, background jobs, Docker) and published all of them on GitHub. I like clean layering, readable code, and learning by shipping.',
     headings: {
       summary: 'Summary',
       projects: 'Projects',
@@ -63,7 +63,7 @@ export const cvContent: Record<Lang, CvContent> = {
       },
       {
         name: 'ClinicManagement',
-        role: 'Clinic management system — team lead, backend owner',
+        role: 'Clinic management system, team lead and backend owner',
         stack: 'ASP.NET Core (.NET 8) · EF Core Code First · Identity · JWT · AutoMapper · Docker',
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
@@ -89,7 +89,7 @@ export const cvContent: Record<Lang, CvContent> = {
       { label: 'Frontend (basic)', items: 'React, TypeScript, Vite, Ant Design, Axios, SCSS' },
     ],
     experience: {
-      title: 'Team Lead — Software Engineering course project',
+      title: 'Team Lead, Software Engineering course project',
       org: 'Tien Giang University',
       period: 'One course term',
       bullets: [
@@ -99,16 +99,16 @@ export const cvContent: Record<Lang, CvContent> = {
     },
     education: {
       school: 'Tien Giang University',
-      degree: 'B.Sc. Information Technology — Web Development track (4th-year student)',
+      degree: 'B.Sc. Information Technology, Web Development track (4th-year student)',
       period: 'In progress',
     },
   },
   vi: {
     name: 'Huỳnh Tấn Chương',
-    title: 'Thực tập sinh Backend — ASP.NET Core (.NET 8)',
+    title: 'Thực tập sinh Backend (ASP.NET Core, .NET 8)',
     location: 'Tiền Giang, Việt Nam',
     summary:
-      'Sinh viên CNTT năm cuối, đang tìm vị trí thực tập Backend (.NET). Đã tự xây dựng ba ứng dụng full-stack từ đầu đến cuối — REST API, cơ sở dữ liệu, xác thực, background job, Docker — và public toàn bộ trên GitHub. Ưu tiên code phân tầng rõ ràng, dễ đọc, và học qua việc làm ra sản phẩm thật.',
+      'Sinh viên CNTT năm cuối, đang tìm vị trí thực tập Backend (.NET). Đã tự xây dựng ba ứng dụng full-stack từ đầu đến cuối (REST API, cơ sở dữ liệu, xác thực, background job, Docker) và public toàn bộ trên GitHub. Ưu tiên code phân tầng rõ ràng, dễ đọc, và học qua việc làm ra sản phẩm thật.',
     headings: {
       summary: 'Giới thiệu',
       projects: 'Dự án',
@@ -130,7 +130,7 @@ export const cvContent: Record<Lang, CvContent> = {
       },
       {
         name: 'ClinicManagement',
-        role: 'Hệ thống quản lý phòng khám — trưởng nhóm, phụ trách backend',
+        role: 'Hệ thống quản lý phòng khám, trưởng nhóm và phụ trách backend',
         stack: 'ASP.NET Core (.NET 8) · EF Core Code First · Identity · JWT · AutoMapper · Docker',
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
@@ -156,7 +156,7 @@ export const cvContent: Record<Lang, CvContent> = {
       { label: 'Frontend (cơ bản)', items: 'React, TypeScript, Vite, Ant Design, Axios, SCSS' },
     ],
     experience: {
-      title: 'Trưởng nhóm — Đồ án môn Công nghệ phần mềm',
+      title: 'Trưởng nhóm, đồ án môn Công nghệ phần mềm',
       org: 'Trường Đại học Tiền Giang',
       period: 'Một học kỳ',
       bullets: [
@@ -166,7 +166,7 @@ export const cvContent: Record<Lang, CvContent> = {
     },
     education: {
       school: 'Trường Đại học Tiền Giang',
-      degree: 'Cử nhân Công nghệ thông tin — định hướng Phát triển Web (sinh viên năm 4)',
+      degree: 'Cử nhân Công nghệ thông tin, định hướng Phát triển Web (sinh viên năm 4)',
       period: 'Đang theo học',
     },
   },
