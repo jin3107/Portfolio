@@ -32,5 +32,3 @@ export const contact = {
   },
 };
 
-// Put your CV at public/cv.pdf, then set enabled to true.
-export const cv = { file: "/cv.pdf", enabled: false };

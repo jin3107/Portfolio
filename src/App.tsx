@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
@@ -6,7 +6,27 @@ import NetworkBackground from './components/NetworkBackground'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
+import Cv from './pages/Cv'
 import { LanguageProvider } from './i18n/LanguageContext'
+
+// The CV is a standalone printable page: no navbar, no animated background.
+function Shell() {
+  const { pathname } = useLocation()
+  if (pathname === '/cv') return <Cv />
+  return (
+    <>
+      <NetworkBackground />
+      <Navbar />
+      <main className="page-main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+    </>
+  )
+}
 
 function App() {
   // Mouse spotlight: updates two CSS vars on the hovered tile, throttled to one write per frame.
@@ -33,15 +53,7 @@ function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
-        <NetworkBackground />
-        <Navbar />
-        <main className="page-main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+        <Shell />
       </BrowserRouter>
     </LanguageProvider>
   )

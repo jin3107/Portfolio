@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Download, Mail } from 'lucide-react'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa6'
-import { socialLinks, cv } from '../data/portfolio'
+import { socialLinks } from '../data/portfolio'
+import { cvFile } from '../data/cv'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const iconMap: Record<string, ReactNode> = {
@@ -11,11 +12,11 @@ const iconMap: Record<string, ReactNode> = {
 }
 
 export default function SocialLinks({ showCv = false }: { showCv?: boolean }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   return (
     <div className="social-links">
-      {showCv && cv.enabled && (
-        <a className="social-link btn-primary" href={cv.file} download>
+      {showCv && (
+        <a className="social-link btn-primary" href={cvFile(lang)} download>
           <Download size={16} /> {t.home.downloadCv}
         </a>
       )}
