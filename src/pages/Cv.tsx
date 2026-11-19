@@ -16,7 +16,7 @@ export default function Cv() {
 
   useEffect(() => {
     const prev = document.title
-    document.title = `${c.name} — CV`
+    document.title = `${c.name} CV`
     return () => {
       document.title = prev
     }
@@ -89,7 +89,7 @@ export default function Cv() {
           <div className="cv-item">
             <div className="cv-row">
               <h3>
-                {c.experience.title} <span className="cv-role">— {c.experience.org}</span>
+                {c.experience.title}<span className="cv-role">, {c.experience.org}</span>
               </h3>
               <span className="cv-date">{c.experience.period}</span>
             </div>
@@ -105,7 +105,7 @@ export default function Cv() {
           <h2>{c.headings.education}</h2>
           <div className="cv-row">
             <h3>
-              {c.education.school} <span className="cv-role">— {c.education.degree}</span>
+              {c.education.school}<span className="cv-role">, {c.education.degree}</span>
             </h3>
             <span className="cv-date">{c.education.period}</span>
           </div>
