@@ -36,12 +36,17 @@ export default function Cv() {
       <article className="cv-sheet" lang={lang}>
         <header className="cv-head">
           <h1>{c.name}</h1>
-          <p className="cv-title">{c.title}</p>
+          <div className="cv-titlerow">
+            <p className="cv-title">{c.title}</p>
+            <span className="cv-loc">
+              <a href={cvContact.phoneUrl}>{cvContact.phone}</a> · {c.location}
+            </span>
+          </div>
           <p className="cv-contact">
             <a href={`mailto:${cvContact.email}`}>{cvContact.email}</a>
             <a href={cvContact.githubUrl}>{cvContact.github}</a>
             <a href={cvContact.linkedinUrl}>{cvContact.linkedin}</a>
-            <span>{c.location}</span>
+            <a href={cvContact.portfolioUrl}>{cvContact.portfolio}</a>
           </p>
         </header>
 
@@ -55,13 +60,16 @@ export default function Cv() {
           {c.projects.map((p) => (
             <div className="cv-item" key={p.name}>
               <div className="cv-row">
-                <h3>{p.name}</h3>
+                <h3>
+                  {p.name}
+                  <span className="cv-role">, {p.role}</span>
+                </h3>
                 <a className="cv-link" href={`https://${p.link}`}>
                   {p.link}
                 </a>
               </div>
               <p className="cv-stack">
-                <span className="cv-role">{p.role}</span> · {p.stack}
+                <b>{c.headings.stack}:</b> {p.stack}
               </p>
               <ul>
                 {p.bullets.map((b) => (
@@ -89,7 +97,8 @@ export default function Cv() {
           <div className="cv-item">
             <div className="cv-row">
               <h3>
-                {c.experience.title}<span className="cv-role">, {c.experience.org}</span>
+                {c.experience.title}
+                <span className="cv-role">, {c.experience.org}</span>
               </h3>
               <span className="cv-date">{c.experience.period}</span>
             </div>
@@ -105,7 +114,8 @@ export default function Cv() {
           <h2>{c.headings.education}</h2>
           <div className="cv-row">
             <h3>
-              {c.education.school}<span className="cv-role">, {c.education.degree}</span>
+              {c.education.school}
+              <span className="cv-role">, {c.education.degree}</span>
             </h3>
             <span className="cv-date">{c.education.period}</span>
           </div>

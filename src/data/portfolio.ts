@@ -10,7 +10,7 @@ export const socialLinks = [
   },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/hu%E1%BB%B3nh-t%E1%BA%A5n-ch%C6%B0%C6%A1ng-7b80242b2/",
+    link: "https://www.linkedin.com/in/huynh-chuong-7b80242b2/",
     color: "#0077B5",
   },
   {
