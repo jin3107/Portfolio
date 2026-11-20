@@ -34,8 +34,8 @@ export const cvContact = {
   phoneUrl: 'tel:+84948637759',
   github: 'github.com/jin3107',
   githubUrl: 'https://github.com/jin3107',
-  linkedin: 'linkedin.com/in/huynh-chuong-7b80242b2',
-  linkedinUrl: 'https://www.linkedin.com/in/huynh-chuong-7b80242b2/',
+  linkedin: 'linkedin.com/in/chuong-huynh-7b80242b2',
+  linkedinUrl: 'https://www.linkedin.com/in/chuong-huynh-7b80242b2/',
   portfolio: 'jin3107.is-a.dev',
   portfolioUrl: 'https://jin3107.is-a.dev',
 }
@@ -74,7 +74,7 @@ export const cvContent: Record<Lang, CvContent> = {
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
           'Built the REST API for appointments, prescriptions, invoices and reports, with role-based access for Admin, Doctor, Receptionist and Patient.',
-          'Layered Controller, Service, Repository with DTO mapping; JWT access token plus refresh token in an HttpOnly cookie; Swagger docs.',
+          'Structured the backend in Clean Architecture layers (API, Application, Domain, Infrastructure) with DTO mapping; refresh token in an HttpOnly cookie; Swagger docs.',
         ],
       },
       {
@@ -84,7 +84,7 @@ export const cvContent: Record<Lang, CvContent> = {
         link: 'github.com/jin3107/TodoApp_BasicToModern',
         bullets: [
           'Implemented refresh-token rotation, email OTP verification and admin-only report endpoints.',
-          'Cached heavy dashboard queries in Redis (memory-cache fallback); Quartz jobs for reminders and cleanup; deployed with Docker Compose behind Nginx.',
+          'Cached report queries in Redis (30-minute TTL), switchable to in-memory cache via config; Quartz jobs for reminders and cleanup; Docker Compose behind Nginx.',
         ],
       },
     ],
@@ -100,7 +100,7 @@ export const cvContent: Record<Lang, CvContent> = {
       period: 'One course term',
       bullets: [
         'Led a student team building a clinic management system; split tasks and owned the backend.',
-        'Continued it as ClinicManagement and am migrating it to Clean Architecture.',
+        'Continued it as ClinicManagement and migrated it from Repository Pattern to Clean Architecture.',
       ],
     },
     education: {
@@ -142,7 +142,7 @@ export const cvContent: Record<Lang, CvContent> = {
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
           'Xây dựng REST API cho lịch hẹn, đơn thuốc, hóa đơn và báo cáo, phân quyền cho Admin, Bác sĩ, Lễ tân và Bệnh nhân.',
-          'Phân tầng Controller, Service, Repository, map DTO; access token JWT kèm refresh token trong HttpOnly cookie; tài liệu Swagger.',
+          'Tổ chức backend theo các tầng Clean Architecture (API, Application, Domain, Infrastructure), map DTO; refresh token trong HttpOnly cookie; tài liệu Swagger.',
         ],
       },
       {
@@ -152,7 +152,7 @@ export const cvContent: Record<Lang, CvContent> = {
         link: 'github.com/jin3107/TodoApp_BasicToModern',
         bullets: [
           'Cài đặt refresh-token rotation, xác thực email bằng OTP và các endpoint báo cáo chỉ dành cho admin.',
-          'Cache Redis cho truy vấn dashboard nặng (fallback memory cache); job Quartz nhắc việc và dọn dẹp; triển khai bằng Docker Compose sau Nginx.',
+          'Cache Redis cho truy vấn báo cáo (TTL 30 phút), chuyển sang memory cache bằng cấu hình; job Quartz nhắc việc và dọn dẹp; Docker Compose sau Nginx.',
         ],
       },
     ],
@@ -168,7 +168,7 @@ export const cvContent: Record<Lang, CvContent> = {
       period: 'Một học kỳ',
       bullets: [
         'Dẫn dắt nhóm sinh viên xây dựng hệ thống quản lý phòng khám; chia việc và phụ trách backend.',
-        'Tiếp tục phát triển thành ClinicManagement, đang migrate sang Clean Architecture.',
+        'Tiếp tục phát triển thành ClinicManagement và đã migrate từ Repository Pattern sang Clean Architecture.',
       ],
     },
     education: {
