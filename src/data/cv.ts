@@ -70,10 +70,10 @@ export const cvContent: Record<Lang, CvContent> = {
       {
         name: 'ClinicManagement',
         role: 'Clinic management, team lead',
-        stack: 'ASP.NET Core (.NET 8), EF Core Code First, Identity, JWT, AutoMapper, Docker',
+        stack: 'ASP.NET Core (.NET 8), EF Core Code First, Identity, JWT, Quartz.NET, Docker',
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
-          'Built the REST API for appointments, prescriptions, invoices and reports, with role-based access for Admin, Doctor, Receptionist and Patient.',
+          'Built REST APIs for appointments, medical exams, prescriptions, invoices and doctor schedules, with role-based access for SuperAdmin, Doctor, Receptionist and Patient.',
           'Structured the backend in Clean Architecture layers (API, Application, Domain, Infrastructure) with DTO mapping; refresh token in an HttpOnly cookie; Swagger docs.',
         ],
       },
@@ -89,7 +89,7 @@ export const cvContent: Record<Lang, CvContent> = {
       },
     ],
     skills: [
-      { label: 'Backend', items: 'C#, ASP.NET Core Web API, EF Core, Identity, JWT, AutoMapper, Quartz.NET, Serilog' },
+      { label: 'Backend', items: 'C#, ASP.NET Core Web API, EF Core, Identity, JWT, Quartz.NET, Serilog' },
       { label: 'Architecture', items: 'Repository Pattern, Clean Architecture, CQRS (familiar), layered design' },
       { label: 'Data & Infra', items: 'MySQL, Redis, Docker Compose, Nginx, Git / GitHub' },
       { label: 'Frontend (basic)', items: 'React, TypeScript, Vite, Ant Design, Axios, SCSS' },
@@ -99,13 +99,13 @@ export const cvContent: Record<Lang, CvContent> = {
       org: 'Tien Giang University',
       period: 'One course term',
       bullets: [
-        'Led a student team building a clinic management system; split tasks and owned the backend.',
+        'Led a student team building a clinic management system and was mainly responsible for the backend.',
         'Continued it as ClinicManagement and migrated it from Repository Pattern to Clean Architecture.',
       ],
     },
     education: {
       school: 'Tien Giang University',
-      degree: 'B.Sc. Information Technology, Web Development track',
+      degree: 'Information Technology, Web Development track',
       period: '4th-year student',
     },
   },
@@ -138,10 +138,10 @@ export const cvContent: Record<Lang, CvContent> = {
       {
         name: 'ClinicManagement',
         role: 'Quản lý phòng khám, trưởng nhóm backend',
-        stack: 'ASP.NET Core (.NET 8), EF Core Code First, Identity, JWT, AutoMapper, Docker',
+        stack: 'ASP.NET Core (.NET 8), EF Core Code First, Identity, JWT, Quartz.NET, Docker',
         link: 'github.com/jin3107/ClinicManagement',
         bullets: [
-          'Xây dựng REST API cho lịch hẹn, đơn thuốc, hóa đơn và báo cáo, phân quyền cho Admin, Bác sĩ, Lễ tân và Bệnh nhân.',
+          'Xây dựng REST API cho lịch hẹn, phiếu khám, đơn thuốc, hóa đơn và lịch làm việc bác sĩ, phân quyền cho SuperAdmin, Bác sĩ, Lễ tân và Bệnh nhân.',
           'Tổ chức backend theo các tầng Clean Architecture (API, Application, Domain, Infrastructure), map DTO; refresh token trong HttpOnly cookie; tài liệu Swagger.',
         ],
       },
@@ -157,7 +157,7 @@ export const cvContent: Record<Lang, CvContent> = {
       },
     ],
     skills: [
-      { label: 'Backend', items: 'C#, ASP.NET Core Web API, EF Core, Identity, JWT, AutoMapper, Quartz.NET, Serilog' },
+      { label: 'Backend', items: 'C#, ASP.NET Core Web API, EF Core, Identity, JWT, Quartz.NET, Serilog' },
       { label: 'Kiến trúc', items: 'Repository Pattern, Clean Architecture, CQRS (đã làm quen), thiết kế phân tầng' },
       { label: 'Dữ liệu & Hạ tầng', items: 'MySQL, Redis, Docker Compose, Nginx, Git / GitHub' },
       { label: 'Frontend (cơ bản)', items: 'React, TypeScript, Vite, Ant Design, Axios, SCSS' },
@@ -167,13 +167,13 @@ export const cvContent: Record<Lang, CvContent> = {
       org: 'Trường Đại học Tiền Giang',
       period: 'Một học kỳ',
       bullets: [
-        'Dẫn dắt nhóm sinh viên xây dựng hệ thống quản lý phòng khám; chia việc và phụ trách backend.',
+        'Dẫn dắt nhóm sinh viên xây dựng hệ thống quản lý phòng khám, phụ trách chính phần backend.',
         'Tiếp tục phát triển thành ClinicManagement và đã migrate từ Repository Pattern sang Clean Architecture.',
       ],
     },
     education: {
       school: 'Trường Đại học Tiền Giang',
-      degree: 'Cử nhân Công nghệ thông tin, định hướng Phát triển Web',
+      degree: 'Công nghệ thông tin, định hướng Phát triển Web',
       period: 'Sinh viên năm 4',
     },
   },
